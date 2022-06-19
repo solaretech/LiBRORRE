@@ -59,6 +59,10 @@ class UsersController < ApplicationController
     @admin_comment_page = true
   end
 
+  def admin_command
+    @user = current_user
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
