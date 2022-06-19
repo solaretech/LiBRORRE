@@ -19,6 +19,18 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+$(document).on('turbolinks:load', function() {
+  $('#more-articles').click(function(){
+    $('#loading').css('display', 'table');
+  });
+  $('#more-stories').click(function(){
+    $('#loading').css('display', 'table');
+  });
+  $('#more-stocks').click(function(){
+    $('#loading').css('display', 'table');
+  });
+});
+
 // ユーザーメニューのプルダウン
 $(document).on('turbolinks:load', function() {
   $('#user-menu').hover(function(){
@@ -98,8 +110,8 @@ $(document).on('turbolinks:load', function() {
     $('#content-left').show();
     elementSet('left');
   });
-
 });
+
 
 // フラッシュメッセージ
 $(document).on('turbolinks:load', function() {

@@ -24,24 +24,9 @@
               <%= link_to category.name, category_path(category), class:'category-tag' %>
             <% end %>
           </p>
-          <% @topics.each do |topic| %>
-            <h4 class="story-topic-title"><%= topic.title %></h4>
-            <% topic.story_bodies.each do |body| %>
-              <div class="story-body-area">
-                <% if body.text_type == 1 %>
-                <!-- text_type:1 コード用のレイアウト使用 -->
-                  <div class="code">
-                    <pre>
-                      <%= simple_format(body.content) %>
-                    </pre>
-                  </div>
-                <% else %>
-                <!-- text_type:0 通常レイアウト使用 -->
-                  <%= simple_format(body.content) %>
-                <% end %>
-              </div>
-            <% end %>
-          <% end %>
+          <p>
+            <%= markdown_convertion(@story.content) %>
+          </p>
         </div>
         <% if user_signed_in? %>
           <div class="content-box-foot">

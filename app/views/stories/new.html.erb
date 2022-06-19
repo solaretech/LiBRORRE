@@ -13,15 +13,8 @@
                 </ul>
                 <%= hidden_field_tag :category_hidden,@category_list %>
             </div>
-            <div>
-              <%= f.fields_for :story_topics do |topic| %>
-                <div>
-                  <%= render 'story_topic_fields', f: topic %>
-                </div>
-              <% end %>
-              <div>
-                <%= link_to_add_association '見出しの追加',f, :story_topics, class: 'btn btn-add' %>
-              </div>
+            <div class="story-topic">
+              <%= f.text_area :content, class: "body-textarea" %>
             </div>
           </div>
           <div class="content-box-foot">
