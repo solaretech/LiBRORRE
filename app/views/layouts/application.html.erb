@@ -16,6 +16,13 @@
       <%= render partial: '/layouts/flash', locals:{flash: flash} %>
     </div>
 
+  <!-- Ajaxローディング画面 -->
+    <div id="loading">
+      <div class="loading-pic"></div>
+    </div>
+
+  <!-- コンテンツ部分 -->
+
     <header class="clearfix">
       <%= link_to(root_path) do %>
         <div class="header-logo">

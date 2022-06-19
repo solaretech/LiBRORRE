@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/about' => 'users#about', as: 'about'
   get '/article/:id/histories' => 'article_histories#index', as: 'article_histories'
   get '/article_histories/:id' => 'article_histories#show', as: 'article_history'
-
+  get '/stories/convert' => 'stories#markdown_convertion', as: 'convert_story'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :libraries, only:[:index, :create, :destroy]
 
   get 'users/:id/admin' => 'users#admin_show', as: 'admin_user'
+  get 'admin/cmd' => 'users#admin_command', as: 'admin_cmd'
   get 'comments/' => 'users#admin_comments', as: 'admin_comments'
   patch 'users/d/:id' => 'users#unsubscribe', as: 'unsubscribe_user'
   patch 'articles/ow/:id' => 'article_histories#overwrite', as: 'overwrite_article'

@@ -19,6 +19,25 @@ class StoriesController < ApplicationController
     logging_visited_stories(@story)               # 閲覧履歴の記録
   end
 
+  def markdown_convertion
+    stories = Story.all
+    stories.each do |story|
+      story.content = ""
+      story.story_topics.each do |topic|
+        story.content << "## #{topic.title}\n"
+        topic.story_bodies.each do |body|
+          if body.text_type == 0
+            story.content << "#{body.content}"
+          else
+            story.content << "```#{body.content}```"
+          end
+        end
+      end
+      story.content.gsub(/(\\r\\n|\\r|\\n)/, "\n")
+      story.save!
+    end
+  end
+
   def edit
     @story = Story.find(params[:id])
     unless @story.user.id == current_user.id
